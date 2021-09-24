@@ -1,0 +1,21 @@
+.form {
+  border: 1px solid blue;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 30px;
+  align-items: center;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+.form label,
+.form input {
+  margin: 5px;
+  max-width: 200px;
+}
+
+.input {
+  border: 1px solid blue;
+}
