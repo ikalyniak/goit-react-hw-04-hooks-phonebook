@@ -7,7 +7,7 @@ import Filter from './components/Filter/Filter';
 import dataContacts from './contacts.json';
 import styles from './App.module.css';
 
-class App extends React.Component {
+class oldApp extends React.Component {
   static propTypes = {
     contacts: PropTypes.array,
     filter: PropTypes.string,
@@ -73,4 +73,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default oldApp;

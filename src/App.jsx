@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useLocalStorage from './hooks/useLocalStorage';
@@ -10,17 +10,40 @@ import styles from './App.module.css';
 
 export default function App() {
   const [contacts, setContacts] = useLocalStorage('contacts', dataContacts);
+  const [filter, setFilter] = useState('');
 
-  const { filter } = this.state;
-  const filteredContacts = this.getContacts();
+  const addNewContact = newContact => {
+    contacts.find(elem => elem.name === newContact.name)
+      ? alert(`${newContact.name} is already in contacts`)
+      : setContacts([...contacts, newContact]);
+  };
+
+  const changeFilter = event => {
+    setFilter(event.currentTarget.value);
+  };
+
+  const getContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+  };
+
+  const deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(item => item.id !== id),
+    }));
+  };
+
+  const filteredContacts = getContacts();
 
   return (
     <div className={styles.app}>
       <h1>Phonebook</h1>
-      <Form addContact={this.addNewContact} />
+      <Form addContact={addNewContact} />
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={this.changeFilter} />
-      <Contacts contacts={filteredContacts} onClick={this.deleteContact} />
+      <Filter value={filter} onChange={changeFilter} />
+      <Contacts contacts={filteredContacts} onClick={deleteContact} />
     </div>
   );
 }
