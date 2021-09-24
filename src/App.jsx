@@ -30,9 +30,7 @@ export default function App() {
   };
 
   const deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(item => item.id !== id),
-    }));
+    setContacts(contacts.filter(item => item.id !== id));
   };
 
   const filteredContacts = getContacts();
