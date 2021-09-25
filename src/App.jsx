@@ -15,7 +15,7 @@ export default function App() {
   const addNewContact = newContact => {
     contacts.find(elem => elem.name === newContact.name)
       ? alert(`${newContact.name} is already in contacts`)
-      : setContacts([...contacts, newContact]);
+      : setContacts(state => [...state, newContact]);
   };
 
   const changeFilter = event => {
